@@ -1,13 +1,11 @@
 class Tarefa {
-  int id;
-  String descricao;
-  String titulo;
+  String? titulo;
+  String? descricao;
   bool pronta;
 
   Tarefa({
-    required this.id,
-    required this.descricao,
-    required this.titulo,
+    this.titulo,
+    this.descricao,
     this.pronta = false,
   });
 }

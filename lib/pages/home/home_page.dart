@@ -25,12 +25,15 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.of(context).push(
+        onPressed: () async {
+          Tarefa? tarefa = await Navigator.of(context).push<Tarefa>(
             MaterialPageRoute(builder: (context) {
               return CadastroPage();
             }),
           );
+          setState(() {
+            tarefas.add(tarefa!);
+          });
         },
       ),
     );

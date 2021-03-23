@@ -14,8 +14,8 @@ class _ItemListaWidgetState extends State<ItemListaWidget> {
   @override
   Widget build(BuildContext context) {
     return CheckboxListTile(
-      title: Text(widget.tarefa.titulo),
-      subtitle: Text(widget.tarefa.descricao),
+      title: Text(widget.tarefa.titulo!),
+      subtitle: Text(widget.tarefa.descricao!),
       value: widget.tarefa.pronta,
       onChanged: (bool? value) {
         setState(() {
