@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todocomputacomovel/core/widgets/generic_text_form_field.dart';
 import 'package:todocomputacomovel/models/tarefa.dart';
 
 class CadastroPage extends StatefulWidget {
@@ -7,17 +8,13 @@ class CadastroPage extends StatefulWidget {
 }
 
 class _CadastroPageState extends State<CadastroPage> {
-  // TODO: validar a princiapal função do late
-  late TextEditingController txtTituloCtrl;
-  late TextEditingController txtDescricaoCtrl;
-  late Tarefa tarefa;
+  late Tarefa _tarefa;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    txtTituloCtrl = TextEditingController();
-    txtDescricaoCtrl = TextEditingController();
-    tarefa = Tarefa();
+    _tarefa = Tarefa();
   }
 
   @override
@@ -29,37 +26,38 @@ class _CadastroPageState extends State<CadastroPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextField(
-                controller: txtTituloCtrl,
-                decoration: InputDecoration(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                GenericTextFormField(
                   labelText: 'Título',
                   hintText: 'Ex.: Lavar a louça',
-                  border: OutlineInputBorder(),
+                  errorMsg: 'Tútulo é obrigatório',
+                  onSaved: (value) => _tarefa.titulo = value,
+                  formKey: _formKey,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              TextField(
-                controller: txtDescricaoCtrl,
-                maxLines: 8,
-                decoration: InputDecoration(
+                SizedBox(
+                  height: 10,
+                ),
+                GenericTextFormField(
                   labelText: 'Descrição',
                   hintText: 'Ex.: Não esquecer de pegar o detergente',
-                  border: OutlineInputBorder(),
+                  errorMsg: 'Descrição é obrigatório',
+                  maxLines: 6,
+                  onSaved: (value) => _tarefa.descricao = value,
+                  formKey: _formKey,
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(
-                onPressed: _salvar,
-                child: Text('Salvar'),
-              )
-            ],
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: _salvar,
+                  child: Text('Salvar'),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -67,8 +65,9 @@ class _CadastroPageState extends State<CadastroPage> {
   }
 
   void _salvar() {
-    tarefa.titulo = txtTituloCtrl.text;
-    tarefa.descricao = txtDescricaoCtrl.text;
-    Navigator.of(context).pop<Tarefa>(tarefa);
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      Navigator.of(context).pop<Tarefa>(_tarefa);
+    }
   }
 }
