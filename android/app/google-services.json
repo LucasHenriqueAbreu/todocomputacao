@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "811572125782",
+    "project_id": "todocomputacaomove",
+    "storage_bucket": "todocomputacaomove.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811572125782:android:4fe5ec7d8dbf9f42881bf7",
+        "android_client_info": {
+          "package_name": "br.edu.unidep.todocomputacomovel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811572125782-0qsk12a0itq86jq0dhripmvrts8n3d8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9cUEib4_WqYm-u_jefqgjW4qpL7u_cxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811572125782-0qsk12a0itq86jq0dhripmvrts8n3d8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

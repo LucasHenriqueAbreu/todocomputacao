@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todocomputacomovel/pages/home/home_page.dart';
+import 'package:todocomputacomovel/pages/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: SplashPage(),
     );
   }
 }
